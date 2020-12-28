@@ -13,6 +13,8 @@
     "jest"
   ],
   "rules": {
+    // only used for this project as we reassign the value of the state all the time
+    "no-param-reassign": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
