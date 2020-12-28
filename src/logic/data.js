@@ -5,8 +5,8 @@ export default {
     y: 200,
     dx: 5,
     dy: 5,
-    rad: 20,
-    speed: 20,
+    rad: 10,
+    speed: 10,
   },
   brick: {
     x: 0.5,
@@ -21,5 +21,12 @@ export default {
     lives: 5,
     score: 0,
     level: 1,
+  },
+  paddle: {
+    height: 20,
+    width: 100,
+    x: 30,
+    y: 10,
+    color: '#FF4500',
   },
 };
