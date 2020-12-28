@@ -1,0 +1,21 @@
+// global theme styles
+
+/* default colour scheme */
+
+:root {
+  /* gray palette */
+  --gray-1: hsl(220, 12%, 5%);
+  --gray-2: hsl(220, 10%, 10%);
+  --gray-3: hsl(220, 10%, 20%);
+  --gray-4: hsl(220, 10%, 40%);
+  --gray-5: hsl(220, 10%, 60%);
+  --gray-6: hsl(220, 10%, 90%);
+  --gray-7: hsl(220, 10%, 95%);
+  --gray-8: hsl(220, 10%, 98%);
+
+  /* colour palette */
+  --primary: hsl(210, 75%, 60%);
+  --success: hsl(158, 73%, 48%);
+  --warning: hsl(46, 97%, 64%);
+  --danger: hsl(352, 95%, 61%);
+}

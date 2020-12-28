@@ -6,7 +6,9 @@ import {
 } from 'react-router-dom';
 
 import About from './Pages/About';
-import Home from './Pages/Home';
+import Breakout from './Pages/Breakout';
+
+import './styles/variables.scss';
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Breakout</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -26,7 +28,7 @@ function App() {
             <About />
           </Route>
           <Route path="/">
-            <Home />
+            <Breakout />
           </Route>
         </Switch>
       </div>
