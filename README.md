@@ -1,5 +1,9 @@
-<h1 align="center"> React-starter </h1> <br>
+<h1 align="center"> BrickBreaker </h1> <br>
 
+
+## Intro
+
+A react based brickbreaker game using canvas.
 
 
 ## Stack
@@ -7,15 +11,12 @@
 - React Router
 - React Context API
 - CSS Modules (scss)
-- React-hook-form
 - Code splitting (React.lazy & Suspense)
-- Chakra UI
 - Jest
 - react-testing-library
 - ESLint - *AirBnB Styleguide*
 - Husky - *v4*
 - StyleLint
-- Storybook
 
 ___
 
