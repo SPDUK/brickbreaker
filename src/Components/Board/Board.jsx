@@ -4,8 +4,14 @@ import { board } from './board.module.scss';
 import data from '../../logic/data';
 import { ballMovement, ballWallCollision } from '../../logic/ball';
 import paddleMovement from '../../logic/paddle';
+import generateBricks from '../../logic/generateBricks';
+import checkBrickHit from '../../logic/brickCollision';
 
-const { ball, paddle } = data;
+const {
+  ball, paddle, brick, player,
+} = data;
+
+let bricks = [];
 
 export default function Board() {
   const canvasRef = useRef(null);
@@ -18,8 +24,21 @@ export default function Board() {
       requestAnimationFrame(render);
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+      // generate bricks
+      const brickSet = generateBricks(2, bricks, canvas, brick);
+
+      if (brickSet && brickSet.length) {
+        bricks = brickSet;
+      }
+      // draw bricks
+      bricks.forEach((b) => b.draw(ctx));
+
       ballMovement(ctx, ball);
       ballWallCollision(canvas, ball);
+
+      checkBrickHit(ball, bricks, player);
+      // check any brick has been hit
+
       paddleMovement(ctx, canvas, paddle);
     };
 

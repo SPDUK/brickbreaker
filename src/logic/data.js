@@ -5,7 +5,7 @@ export default {
     y: 200,
     dx: 5,
     dy: 5,
-    rad: 10,
+    rad: 20,
     speed: 10,
   },
   brick: {

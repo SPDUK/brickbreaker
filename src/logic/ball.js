@@ -10,7 +10,7 @@ export function ballMovement(ctx, ball) {
   ctx.fillStyle = 'red';
   ctx.arc(x, y, rad, 0, 2 * Math.PI);
   ctx.strokeStyle = 'black';
-  ctx.strokeWidth = 4;
+  ctx.strokeWidth = 1;
   ctx.fill();
   ctx.stroke();
 
