@@ -22,17 +22,16 @@ class SingleBrick {
 
 export default function generateBricks(level, bricks, canvas, brick) {
   brick.width = canvas.width / 5 - 1;
+
   const newbricks = [];
   if (!bricks) {
     return [];
   }
-  // If all the levels are filled
+  // if all the levels are filled
   if (bricks.length >= 5 * level) {
-    // eslint-disable-next-line
-    return;
+    return null;
   }
 
-  // Brick Formation here
   for (let i = 0; i < 5 * level; i += 1) {
     const newBrick = new SingleBrick(
       brick.x + brick.width,
@@ -41,7 +40,10 @@ export default function generateBricks(level, bricks, canvas, brick) {
       brick.height,
       brick.colors,
     );
+
     newbricks.push(newBrick);
+
+    // mutate brick state
     brick.x += brick.width + 1;
     if (brick.x + brick.width >= canvas.width) {
       brick.x = 0.5;

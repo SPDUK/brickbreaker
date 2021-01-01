@@ -1,4 +1,4 @@
-// defualt data / state for the game - gets mutated a lot
+// default data / state for the game - gets mutated a lot
 export default {
   ball: {
     x: 20,
