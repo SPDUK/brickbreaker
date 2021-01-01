@@ -6,6 +6,7 @@ import { ballMovement, ballWallCollision } from '../../logic/ball';
 import paddleMovement from '../../logic/paddle';
 import generateBricks from '../../logic/generateBricks';
 import checkBrickHit from '../../logic/brickCollision';
+import paddleHit from '../../logic/paddleHit';
 
 const {
   ball, paddle, brick, player,
@@ -19,6 +20,9 @@ export default function Board() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
+
+    // set paddle y based on canvas
+    paddle.y = canvas.height - 30;
 
     const render = () => {
       requestAnimationFrame(render);
@@ -37,9 +41,11 @@ export default function Board() {
       ballWallCollision(canvas, ball);
 
       checkBrickHit(ball, bricks, player);
-      // check any brick has been hit
-
+      // check any brick has been hit by the ball
       paddleMovement(ctx, canvas, paddle);
+
+      // check if the ball hits the paddle
+      paddleHit(ball, paddle);
     };
 
     render();
