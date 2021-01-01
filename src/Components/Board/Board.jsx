@@ -1,12 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import { board } from './board.module.scss';
 
-import data from '../../logic/data';
+import data, { resetData } from '../../logic/data';
 import { ballMovement, ballWallCollision } from '../../logic/ball';
 import paddleMovement from '../../logic/paddle';
 import generateBricks from '../../logic/generateBricks';
 import checkBrickHit from '../../logic/brickCollision';
 import paddleHit from '../../logic/paddleHit';
+import playerStats from '../../logic/player';
+import allBricksBroken from '../../logic/allBricksBroken';
+import resetBall from '../../logic/resetBall';
 
 const {
   ball, paddle, brick, player,
@@ -22,14 +25,14 @@ export default function Board() {
     const ctx = canvas.getContext('2d');
 
     // set paddle y based on canvas
-    paddle.y = canvas.height - 30;
+    paddle.y = canvas.height - paddle.height;
 
     const render = () => {
       requestAnimationFrame(render);
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
       // generate bricks
-      const brickSet = generateBricks(2, bricks, canvas, brick);
+      const brickSet = generateBricks(player.level, bricks, canvas, brick);
 
       if (brickSet && brickSet.length) {
         bricks = brickSet;
@@ -38,7 +41,8 @@ export default function Board() {
       bricks.forEach((b) => b.draw(ctx));
 
       ballMovement(ctx, ball);
-      ballWallCollision(canvas, ball);
+
+      ballWallCollision(canvas, ball, paddle, player);
 
       checkBrickHit(ball, bricks, player);
       // check any brick has been hit by the ball
@@ -46,6 +50,19 @@ export default function Board() {
 
       // check if the ball hits the paddle
       paddleHit(ball, paddle);
+      // draw stats
+      playerStats(ctx, player, canvas);
+
+      // check if all bricks are broken
+      allBricksBroken(bricks, player, ball);
+
+      // reset if game over!
+      if (player.lives === 0) {
+        resetBall(ball, paddle);
+        resetData();
+        bricks.length = 0;
+        alert('You lost! press OK to restart');
+      }
     };
 
     render();

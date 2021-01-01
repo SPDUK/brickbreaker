@@ -19,17 +19,21 @@ export function ballMovement(ctx, ball) {
   ball.y += dy;
 }
 
-export function ballWallCollision(canvas, ball) {
-  const {
-    x, y, rad,
-  } = ball;
+export function ballWallCollision(canvas, ball, paddle, player) {
+  if (ball.y + ball.rad > canvas.height) {
+    // remove a life
+    player.lives -= 1;
 
-  // // ball is hitting top or bottom
-  if (y - rad <= 0 || y + rad >= canvas.height) {
+    ball.x = paddle.x;
+    ball.y = paddle.y - 30;
+    ball.dx = 6 * (Math.random() * 2 - 1);
+    ball.dy = -6;
+  }
+  if (ball.y - ball.rad < 0) {
     ball.dy *= -1;
   }
 
-  if (x - rad < 0 || x + rad >= canvas.width) {
+  if (ball.x + ball.rad > canvas.width || ball.x - ball.rad < 0) {
     ball.dx *= -1;
   }
 }

@@ -1,12 +1,12 @@
 // default data / state for the game - gets mutated a lot
-export default {
+const data = {
   ball: {
     x: 20,
     y: 200,
     dx: 5,
     dy: 5,
-    rad: 20,
-    speed: 10,
+    rad: 10,
+    speed: 5,
   },
   brick: {
     x: 0.5,
@@ -17,7 +17,7 @@ export default {
     colors: ['blue', 'lightblue'],
   },
   player: {
-    name: 'User',
+    // name: 'User',
     lives: 5,
     score: 0,
     level: 1,
@@ -30,3 +30,14 @@ export default {
     color: '#FF4500',
   },
 };
+
+export function resetData() {
+  data.player.lives = 5;
+  data.player.score = 0;
+  data.player.level = 1;
+
+  data.brick.x = 0.5;
+  data.brick.y = 50;
+}
+
+export default data;
